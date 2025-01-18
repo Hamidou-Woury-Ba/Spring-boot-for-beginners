@@ -11,6 +11,7 @@ public class Student {
 
     private int age;
 
+
     public Student(String firstname, String lastname, String dateOfBirth, String email, int age) {
         this.firstname = firstname;
         this.lastname = lastname;
@@ -39,6 +40,10 @@ public class Student {
     }
 
     public String dateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
