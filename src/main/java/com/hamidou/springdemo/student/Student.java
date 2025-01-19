@@ -1,14 +1,27 @@
 package com.hamidou.springdemo.student;
 
+import jakarta.persistence.*;
+
+import java.time.LocalDate;
+import java.time.Period;
+
+@Entity
+@Table
 public class Student {
+
+    @Id
+    @GeneratedValue
+    private Integer id;
     private String firstname;
 
     private String lastname;
 
     private String dateOfBirth;
 
+    @Column(unique = true)
     private String email;
 
+    @Transient
     private int age;
 
 
@@ -21,6 +34,14 @@ public class Student {
     }
 
     public Student() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getFirstname() {
@@ -60,7 +81,7 @@ public class Student {
     }
 
     public int getAge() {
-        return age;
+        return Period.between(LocalDate.parse(dateOfBirth), LocalDate.now()).getYears();
     }
 
     public void setAge(int age) {
